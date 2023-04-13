@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "eaiconect",
+    "slug": "eaiconect",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
