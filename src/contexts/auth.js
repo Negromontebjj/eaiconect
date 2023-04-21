@@ -17,9 +17,9 @@ function AuthProvider({children, visible}) {
 
   useEffect(() => {
     axios.get(baseURL)
-      .then((response) => {
+      .then((resposta) => {
       //setUser(response.data)
-      var teste = response.data
+      var teste = resposta.data
       var teste1 = teste.response
       setUser(teste1)
     });
@@ -33,19 +33,26 @@ function AuthProvider({children, visible}) {
     if(telefone === '' || senha === '') {
       alert('Preencha os Campos, Agradecemos!')
 
-
     } else {
-      const lista = user.filter((objeto) => {
-        if(objeto.Telefone === telefone) {
-          navigation.navigate('TelaFuncionario', {lista:objeto.Email})
+       const lista = user.filter((objeto) => {
+         if(objeto.Telefone === telefone) {
+          // var email = objeto.Email
+          // var cpf = objeto.CPF
+          // var nome = objeto.Nome
+          // console.log(email)
+          // console.log(cpf)
+          // console.log(nome)
+          navigation.navigate('TelaFuncionario', {teste:objeto})
+
           // console.log('Acertou')
           //console.log(objeto.Email)
-        }})
+        }
+      })
 
 
 
         // const lista = user.filter((objeto) => objeto.Telefone === telefone);
-        // console.log(objeto)
+        // console.log(lista)
 
     }
 
@@ -73,7 +80,7 @@ function AuthProvider({children, visible}) {
 
   return (
 
-        <AuthContext.Provider value={{signIn, fone, user}}>
+        <AuthContext.Provider value={{signIn, fone}}>
           {children}
         </AuthContext.Provider>
 

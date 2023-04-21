@@ -9,13 +9,14 @@ import { AuthContext } from '../../contexts/auth';
 export default function HistoricoServico({route}) {
   const navigation = useNavigation();
   const {fone} = useContext(AuthContext)
+  const funcionario = route.params?.teste
 
     return (
     <KeyboardAvoidingView style={styles.container}>
       <Entypo style={styles.info} name="info-with-circle" size={45} color="#fff" />
 
       <View style={styles.header}>
-        <Text style={styles.informacoesFunc}>Nº Celular Logado : {fone.telefone}</Text>
+        <Text style={styles.informacoesFunc}>Nº Celular Logado : {funcionario.Telefone}</Text>
       </View>
 
       <View style={styles.Rel}>

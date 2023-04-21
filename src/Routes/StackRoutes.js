@@ -18,12 +18,8 @@ import api from "../Services/api";
 const Stack = createNativeStackNavigator();
 
 export function StackRoutes() {
-
-
-
-
   return (
-    <Stack.Navigator initialRouteName="TelaPricipal">
+    <Stack.Navigator initialRouteName="TelaPrincipal">
       <Stack.Screen
         name="TelaPrincipal"
         component={TelaPrincipal}

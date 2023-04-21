@@ -1,18 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity, ImageBackground  } from "react-native";
+import { Text, StyleSheet, SafeAreaView,  TouchableOpacity, ImageBackground  } from "react-native";
 import { Logo } from "../../Component/logo";
-import { Ionicons, Entypo } from "@expo/vector-icons";
-import { useState } from "react";
-import { StackRoutes } from "../../Routes/stackNaoAutorizados";
+import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-
+import { StackRoutes } from "../../Routes/StackRoutes";
 
 export default function TelaPrincipal() {
-  const [pesquisa, setPesquisa] = useState('');
   const navigation = useNavigation();
-  function FuncaoPesquisa() {
-    alert(pesquisa)
-  }
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -22,7 +17,6 @@ export default function TelaPrincipal() {
         style={styles.imagemFundo}
       >
         <Logo />
-
 
 
       <Text style={styles.text}>Encontre a Tecnologia</Text>

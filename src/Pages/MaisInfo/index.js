@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
   import { StyleSheet, Text, View } from 'react-native';
   import { Dropdown } from 'react-native-element-dropdown';
   import AntDesign from '@expo/vector-icons/AntDesign';
+  import axios from 'axios';
 
   const data = [
     { label: 'BomBril', value: '1' },
@@ -29,6 +30,14 @@ import React, { useState } from 'react';
       return null;
     };
 
+
+    useEffect(() => {
+        const ClienteS = data.value
+        console.log(ClienteS)
+      });
+
+
+
     return (
       <View style={styles.container}>
         {renderLabel()}
@@ -51,6 +60,7 @@ import React, { useState } from 'react';
           onChange={item => {
             setValue(item.value);
             setIsFocus(false);
+            console.log(item.value)
           }}
           renderLeftIcon={() => (
             <AntDesign
@@ -63,7 +73,7 @@ import React, { useState } from 'react';
         />
       </View>
     );
-  };
+  }
 
   export default MaisInfo;
 
@@ -71,6 +81,8 @@ import React, { useState } from 'react';
     container: {
       flex:1,
       backgroundColor: '#191970',
+      justifyContent: 'center',
+      alignItems:'center',
       padding: 16,
     },
     dropdown: {

@@ -7,19 +7,24 @@ import { AuthContext } from '../../contexts/auth';
 
 
 
-export default function TelaFuncionario(props) {
+export default function TelaFuncionario({route}) {
   const navigation = useNavigation();
   const {user} = useContext(AuthContext);
+  const funcionario = route.params?.teste
 
 
   return (
 
     <KeyboardAvoidingView style={styles.container}>
       <View style={styles.notificacao}>
-        <Entypo style={styles.info} name="info-with-circle" size={40} color="#fff" />
-        <Text>teste</Text>
+        <Entypo style={styles.info} name="info-with-circle" size={35} color="#fff" />
       </View>
-
+      <View style={styles.notificacao}>
+        <Text style={styles.info}>Telefone :{ funcionario.Telefone}  </Text>
+      </View>
+      <View style={styles.notificacao}>
+        <Text style={styles.info}>Email : { funcionario.Email}</Text>
+      </View>
       <View style={styles.notificacao}>
         <TouchableOpacity onPress={() => navigation.navigate('Notificacao')}>
           <Ionicons name="notifications" size={40} color="#ff3" />
@@ -57,7 +62,7 @@ export default function TelaFuncionario(props) {
 
         <View>
 
-          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('HistoricoServico')}>
+          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('HistoricoServico', {teste:funcionario})}>
             <View style={styles.imgqrcode}>
               <FontAwesome name="history" size={60} color="#fff" />
             </View>
@@ -76,7 +81,7 @@ export default function TelaFuncionario(props) {
 
 
 
-          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('Perfil')}>
+          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('Perfil', {teste:funcionario})}>
             <View style={styles.imgqrcode}>
               <FontAwesome name="gear" size={60} color="#fff" />
             </View>
@@ -104,6 +109,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#191970',
+    justifyContent: 'center',
+    alignItems: 'center'
 
   },
 
@@ -204,7 +211,8 @@ const styles = StyleSheet.create({
 
   },
   info: {
-
+    fontSize: 16,
+    color: '#fff',
     borderRadius: 20,
     marginLeft: 25,
     marginTop: 5,
@@ -228,11 +236,9 @@ const styles = StyleSheet.create({
   },
 
   notificacao: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 10,
+
+
+
 
   }
 

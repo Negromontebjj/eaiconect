@@ -2,15 +2,13 @@ import { View, Text, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Ionicons } from "@expo/vector-icons";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StackRoutes } from "./StackRoutes";
 import { Favoritos } from "../Pages/Favoritos";
 import  Notificacao  from "../Pages/Notificacao";
+import { StackRoutes } from './StackRoutes'
 
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+
 
 export function Routes() {
   return (
