@@ -1,14 +1,14 @@
 import React, {useState, createContext, useEffect} from "react";
 import { useNavigation } from "@react-navigation/native";
-import api from "../Services/api";
 import axios from "axios";
+
 
 
 export const AuthContext = createContext({})
 
 function AuthProvider({children, visible}) {
   const [fone, setFone] = useState({});
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [filter, setFilter] = useState([]);
   const navigation = useNavigation();
 
@@ -33,9 +33,20 @@ function AuthProvider({children, visible}) {
     if(telefone === '' || senha === '') {
       alert('Preencha os Campos, Agradecemos!')
 
+
     } else {
-      const teste = user.filter(objeto => objeto.Telefone === telefone);
-      console.log(teste)
+      const lista = user.filter((objeto) => {
+        if(objeto.Telefone === telefone) {
+          navigation.navigate('TelaFuncionario', {lista:objeto.Email})
+          // console.log('Acertou')
+          //console.log(objeto.Email)
+        }})
+
+
+
+        // const lista = user.filter((objeto) => objeto.Telefone === telefone);
+        // console.log(objeto)
+
     }
 
         // const teste = user.filter(objeto => objeto.Telefone === telefone);
@@ -62,7 +73,7 @@ function AuthProvider({children, visible}) {
 
   return (
 
-        <AuthContext.Provider value={{signIn, fone}}>
+        <AuthContext.Provider value={{signIn, fone, user}}>
           {children}
         </AuthContext.Provider>
 

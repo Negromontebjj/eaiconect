@@ -33,7 +33,7 @@ export function Routes() {
 
     >
       <Tab.Screen
-        name="Home"
+        name="TelaPrincipal"
         component={StackRoutes}
         options={{
           tabBarIcon: ({ focused, size, color }) => {

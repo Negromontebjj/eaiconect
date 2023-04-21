@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TelaPrincipal from "../Pages/TelaPrincipal";
 import Login from "../Pages/Login";
-import Funcionario from "../Pages/Funcionario";
+import TelaFuncionario from "../Pages/TelaFuncionario";
 import HistoricoServico from "../Pages/HistoricoServico";
 import EnviarEmail from "../Pages/EnviarEmail";
 import Ativacao from "../Pages/Ativacao";
@@ -23,7 +23,7 @@ export function StackRoutes() {
 
 
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="TelaPricipal">
       <Stack.Screen
         name="TelaPrincipal"
         component={TelaPrincipal}
@@ -42,8 +42,8 @@ export function StackRoutes() {
       />
 
       <Stack.Screen
-        name="Funcionario"
-        component={Funcionario}
+        name="TelaFuncionario"
+        component={TelaFuncionario}
         options={{
           headerShown: true,
           title: "Tela do Funcionário"

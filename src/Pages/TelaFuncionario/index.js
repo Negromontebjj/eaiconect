@@ -5,14 +5,11 @@ import { Entypo, FontAwesome, AntDesign, Ionicons } from '@expo/vector-icons';
 import { AuthContext } from '../../contexts/auth';
 
 
-export default function TelaFuncionario() {
-  const navigation = useNavigation();
-  const [posts, setPosts] = React.useState(null)
-  const { nome, fone } = useContext(AuthContext)
-  const numero = fone.telefone
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
 
+
+export default function TelaFuncionario(props) {
+  const navigation = useNavigation();
+  const {user} = useContext(AuthContext);
 
 
   return (
@@ -20,7 +17,7 @@ export default function TelaFuncionario() {
     <KeyboardAvoidingView style={styles.container}>
       <View style={styles.notificacao}>
         <Entypo style={styles.info} name="info-with-circle" size={40} color="#fff" />
-
+        <Text>teste</Text>
       </View>
 
       <View style={styles.notificacao}>

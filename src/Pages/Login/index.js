@@ -15,23 +15,7 @@ export default function Login() {
   const navigation = useNavigation();
   const [isChecked, setChecked] = useState(false);
   const [visible, setVisible] = useState(false)
-  //const [user, setUser] = useState(null);
 
-  //const baseURL = "https://eaiconecta-api.onrender.com/Funcionario"
-
-
-  // useEffect(() => {
-  //   axios.get(baseURL)
-  //     .then((response) => {
-  //     //setUser(response.data)
-  //     var teste = response.data
-  //     var teste1 = teste.response
-  //     setUser(teste1[1])
-  //   });
-
-  // },[]);
-
-  // if (!user) return null;
 
   function Termo() {
     return navigation.navigate('Termo')
@@ -48,7 +32,9 @@ export default function Login() {
 
 
   return (
-    <KeyboardAvoidingView style={styles.container}>
+    <KeyboardAvoidingView
+    behavior='padding'
+    style={styles.container}>
       <View style={styles.divLogo}>
 
         <Image
@@ -57,9 +43,6 @@ export default function Login() {
         />
         <View>
           <Text style={styles.textLogin}>FAÇA SEU LOGIN</Text>
-        </View>
-        <View>
-          <Text style={styles.textLogin}>Telefone :  {}  </Text>
         </View>
 
       </View>

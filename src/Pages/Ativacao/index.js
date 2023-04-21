@@ -28,7 +28,7 @@ export default function Ativacao() {
         setVisible(false)
         speak();
         alert('Robô Ativado! Bom Trabalho...')
-      }, 5000)
+      }, 3000)
     }
   }
 
