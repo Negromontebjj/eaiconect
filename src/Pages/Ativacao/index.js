@@ -5,14 +5,16 @@ import { MaterialCommunityIcons, Fontisto, MaterialIcons } from '@expo/vector-ic
 import { ModalPerg } from '../ModalPerg';
 import Loading from '../../Component/loading';
 import * as Speech from 'expo-speech';
+import { Finalizar } from '../../Component/Finalizar';
 
 
-export default function Ativacao() {
+export default function Ativacao({route}) {
   const [inputText, setInputText] = useState('');
   const [pagModal, setPagModal] = useState(false);
   const [visible, setVisible] = useState(false);
   const navigation = useNavigation();
   const [text, setText] = useState('Agora o Robô está Ativado, Bom Trabalho...')
+  const funcionario = route.params?.teste
 
   function speak() {
       Speech.speak(text, {
@@ -31,6 +33,12 @@ export default function Ativacao() {
       }, 3000)
     }
   }
+
+  const Relatorio = () => {
+    navigation.navigate('Relatorio', {teste:funcionario})
+
+  }
+
 
   return (
     <SafeAreaView style={styles.geral}>
@@ -65,7 +73,8 @@ export default function Ativacao() {
             onRequestClose={() => setPagModal(false)}
             style={styles.Modal}
           >
-            <Modal
+            <Finalizar
+
               handleClose={() => setPagModal(false)}
               handleSIM={() => Relatorio()}
               handleNAO={() => setPagModal(false)}

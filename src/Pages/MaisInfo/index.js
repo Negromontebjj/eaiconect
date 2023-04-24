@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-  import { StyleSheet, Text, View } from 'react-native';
+  import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native';
   import { Dropdown } from 'react-native-element-dropdown';
   import AntDesign from '@expo/vector-icons/AntDesign';
-  import axios from 'axios';
+
 
   const data = [
-    { label: 'BomBril', value: '1' },
+    { label: 'BomBril', value: '1'},
     { label: 'Marcelo', value: '2' },
     { label: 'Eduardo', value: '3' },
     { label: 'Vandilma', value: '4' },
@@ -32,8 +32,12 @@ import React, { useState, useEffect } from 'react';
 
 
     useEffect(() => {
-        const ClienteS = data.value
-        console.log(ClienteS)
+          <FlatList
+            data={data}
+            renderItem={(item)=><data {...item}/>}
+            keyExtractor={(item) => item.value}
+          />
+
       });
 
 
@@ -81,12 +85,11 @@ import React, { useState, useEffect } from 'react';
     container: {
       flex:1,
       backgroundColor: '#191970',
-      justifyContent: 'center',
-      alignItems:'center',
       padding: 16,
     },
     dropdown: {
-      height: 50,
+      height: 60,
+      width: 250,
       borderColor: 'gray',
       borderWidth: 0.5,
       borderRadius: 8,
@@ -94,7 +97,7 @@ import React, { useState, useEffect } from 'react';
       backgroundColor: '#fff',
     },
     icon: {
-      marginRight: 5,
+      marginRight: 7,
     },
     label: {
       position: 'absolute',

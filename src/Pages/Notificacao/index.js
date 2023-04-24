@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 export function Notificacao() {
   return(
     <View style={styles.container}>
-      <Text style={styles.text}>Serviços Disponíveis!</Text>
+      <Text style={styles.text}>Tela em desenvolvimento!</Text>
     </View>
   )
 }

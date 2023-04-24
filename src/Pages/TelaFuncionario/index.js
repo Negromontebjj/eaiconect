@@ -20,12 +20,15 @@ export default function TelaFuncionario({route}) {
         <Entypo style={styles.info} name="info-with-circle" size={35} color="#fff" />
       </View>
       <View style={styles.notificacao}>
-        <Text style={styles.info}>Telefone :{ funcionario.Telefone}  </Text>
+        <Text style={styles.info}>Olá : {funcionario.Nome}  </Text>
       </View>
       <View style={styles.notificacao}>
-        <Text style={styles.info}>Email : { funcionario.Email}</Text>
+        <Text style={styles.info}>Telefone : {funcionario.Telefone}  </Text>
       </View>
       <View style={styles.notificacao}>
+        <Text style={styles.info}>Email : {funcionario.Email}</Text>
+      </View>
+      <View style={styles.notificacaoSino}>
         <TouchableOpacity onPress={() => navigation.navigate('Notificacao')}>
           <Ionicons name="notifications" size={40} color="#ff3" />
         </TouchableOpacity>
@@ -33,7 +36,7 @@ export default function TelaFuncionario({route}) {
 
       <View style={styles.containerBox}>
         <View>
-          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('Ativacao')}>
+          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('Ativacao', {teste:funcionario})}>
             <View style={styles.imgqrcode}>
               <Entypo name="key" size={60} color="#fff" />
             </View>
@@ -148,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 20,
+
 
   },
 
@@ -235,11 +238,11 @@ const styles = StyleSheet.create({
     color: '#ff6'
   },
 
-  notificacao: {
+  notificacaoSino: {
 
-
-
-
+    justifyContent: 'center',
+    marginTop: 40,
+    marginBottom: 0,
   }
 
 

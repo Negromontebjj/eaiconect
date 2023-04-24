@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import { View, SafeAreaView, TouchableOpacity, Text, StyleSheet } from "react-native"
 
 
-export function ModalEstudo({handleClose, handleSIM, handleNAO}) {
+export function Finalizar({handleClose, handleSIM, handleNAO}) {
 
   return(
     <SafeAreaView style={styles.container}>
@@ -14,9 +14,9 @@ export function ModalEstudo({handleClose, handleSIM, handleNAO}) {
           style={styles.ModalButton}
           onPress={handleSIM}
         >
-
           <Text style={styles.botao}>Sim</Text>
         </TouchableOpacity>
+        
         <TouchableOpacity
           style={styles.ModalButton}
           onPress={handleNAO}
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
 
   ModalButton:{
-    zIndex: 99,
+    zIndex: 80,
     backgroundColor: '#fff',
     borderRadius: 10,
     alignItems: 'center',

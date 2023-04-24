@@ -13,6 +13,7 @@ import { Notificacao } from "../Pages/Notificacao";
 import { Perfil } from "../Pages/Perfil";
 import { Chat } from "../Pages/Chat";
 import api from "../Services/api";
+import Relatorio from "../Pages/Relatorio";
 
 
 const Stack = createNativeStackNavigator();
@@ -93,6 +94,7 @@ export function StackRoutes() {
       <Stack.Screen name="Perfil" component={Perfil} />
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="api" component={api} />
+      <Stack.Screen name="Relatorio" component={Relatorio} />
 
 
 
