@@ -17,7 +17,7 @@ export default function TelaFuncionario({route}) {
 
     <KeyboardAvoidingView style={styles.container}>
       <View style={styles.notificacao}>
-        <Entypo style={styles.info} name="info-with-circle" size={35} color="#fff" />
+        <Entypo  name="info-with-circle" size={25} color="#fff" />
       </View>
       <View style={styles.notificacao}>
         <Text style={styles.info}>Olá : {funcionario.Nome}  </Text>
@@ -30,7 +30,7 @@ export default function TelaFuncionario({route}) {
       </View>
       <View style={styles.notificacaoSino}>
         <TouchableOpacity onPress={() => navigation.navigate('Notificacao')}>
-          <Ionicons name="notifications" size={40} color="#ff3" />
+          <Ionicons name="notifications" size={70} color="#ff3" />
         </TouchableOpacity>
       </View>
 
@@ -95,7 +95,7 @@ export default function TelaFuncionario({route}) {
         </View>
       </View>
       <KeyboardAvoidingView>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity onPress={() => navigation.navigate('TelaPrincipal')}>
           <View style={styles.divLogo}>
             <Image
               style={styles.logo}
@@ -118,13 +118,14 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 100,
-    height: 100,
+    marginTop: 15,
+    width: 90,
+    height: 90,
 
   },
   divLogo: {
-
-    justifyContent: 'center',
+    marginTop: 15,
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
 
@@ -162,7 +163,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e76041',
     borderWidth: 2,
     margin: 5,
-    borderRadius: 15,
+    borderRadius: 30,
     borderWidth: 2,
     borderColor: '#fff',
     shadowColor: '#000',
@@ -241,8 +242,8 @@ const styles = StyleSheet.create({
   notificacaoSino: {
 
     justifyContent: 'center',
-    marginTop: 40,
-    marginBottom: 0,
+    marginTop: 15,
+    marginBottom: 30,
   }
 
 

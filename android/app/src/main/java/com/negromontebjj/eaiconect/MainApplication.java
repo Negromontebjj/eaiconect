@@ -1,4 +1,4 @@
-package com.eaiconect;
+package com.negromontebjj.eaiconect;
 
 import android.app.Application;
 import android.content.res.Configuration;

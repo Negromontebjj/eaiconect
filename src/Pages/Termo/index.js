@@ -4,42 +4,46 @@ import Checkbox from 'expo-checkbox';
 import { useNavigation } from "@react-navigation/native";
 
 
-export default function Termo() {
+ export default function Termo(){
   const [isChecked, setChecked] = useState(false);
   const navigation = useNavigation();
 
-    return (
-      <KeyboardAvoidingView style={styles.container}>
-      <ScrollView>
-        <View style={styles.box}>
-          <Text>Lei
+  return (
 
+    <KeyboardAvoidingView style={styles.container}>
+      <View style={styles.section}>
+
+        <Checkbox
+          style={styles.checkbox}
+          value={isChecked}
+          onValueChange={setChecked}
+          color={isChecked ? '#4630EB' : undefined}
+        />
+        <View>
+          <Text style={styles.paragraph}>
+            Termos de Uso!
           </Text>
         </View>
-        </ScrollView>
-        <View style={styles.section}>
+      </View>
 
-          <Checkbox
-            style={styles.checkbox}
-            value={isChecked}
-            onValueChange={setChecked}
-            color={isChecked ? '#4630EB' : undefined}
-          />
+      <View style={styles.ConcordaEdiscorda}>
+        <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Login')}>
           <View>
-            <Text style={styles.paragraph}>Termos de Uso!</Text>
+            <Text style={styles.TextConcorda}>
+              Concordo
+            </Text>
           </View>
-        </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Home')}>
+          <View>
+            <Text style={styles.TextNaoConcorda}>
+              Não Concordo
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
 
-        <View style={styles.ConcordaEdiscorda}>
-          <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.TextConcorda}>Concordo</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Home')}>
-            <Text style={styles.TextNaoConcorda}>Não Concordo</Text>
-          </TouchableOpacity>
-        </View>
-
-      </KeyboardAvoidingView>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -59,8 +63,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     marginTop: 20,
-    height: 100,
-    width: 100,
+    height: 600,
+    width: 420,
     alignItems: 'center',
     borderRadius: 30,
     padding: 10,
@@ -113,3 +117,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
 })
+
+

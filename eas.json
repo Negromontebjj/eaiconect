@@ -3,6 +3,19 @@
     "version": ">= 3.9.2"
   },
   "build": {
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "preview2": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease"
+      }
+    },
+    "preview3": {
+      "developmentClient": true
+    },
     "development": {
       "distribution": "internal",
       "android": {
@@ -13,7 +26,7 @@
         "resourceClass": "m-medium"
       }
     },
-    "preview": {
+    "preview4": {
       "distribution": "internal",
       "ios": {
         "resourceClass": "m-medium"

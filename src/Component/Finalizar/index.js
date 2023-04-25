@@ -16,7 +16,7 @@ export function Finalizar({handleClose, handleSIM, handleNAO}) {
         >
           <Text style={styles.botao}>Sim</Text>
         </TouchableOpacity>
-        
+
         <TouchableOpacity
           style={styles.ModalButton}
           onPress={handleNAO}
@@ -36,9 +36,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'space-around',
-    backgroundColor: '#FFD700',
-    marginVertical: 60,
-    borderRadius: 20,
+    backgroundColor: '#F4A460',
+    marginVertical: 90,
+    borderRadius: 30,
     height: 90,
     paddingLeft: 2,
     paddingRight: 2,
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
 
   ModalButton:{
     zIndex: 80,
-    backgroundColor: '#fff',
-    borderRadius: 10,
+    backgroundColor: '#191970',
+    borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     fontWeight: ' bold',
     padding:10,
     fontSize: 24,
-    color: 'green'
+    color: '#fff'
 
   },
   Cancelar:{
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
 
     textAlign: 'center',
     fontWeight: ' bold',
-    fontSize: 22,
+    fontSize: 14,
 
   }
 })

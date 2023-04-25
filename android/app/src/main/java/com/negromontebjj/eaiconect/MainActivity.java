@@ -1,4 +1,4 @@
-package com.eaiconect;
+package com.negromontebjj.eaiconect;
 
 import android.os.Build;
 import android.os.Bundle;

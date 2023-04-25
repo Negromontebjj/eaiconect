@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView, TouchableOpacity, TextInput} from 'react-native';
+import { View, Text, StyleSheet, KeyboardAvoidingView, TouchableOpacity, TextInput, Platform} from 'react-native';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { printToFileAsync } from 'expo-print';
+import { shareAsync } from 'expo-sharing';
+
 
 
 export default function Relatorio({route}) {
@@ -12,12 +15,65 @@ export default function Relatorio({route}) {
   const [servico, setServico] = useState('');
   const [horario, setHorario] = useState('');
   const [data, setData] = useState('');
+  const inicioServico = '10:25'
+  const fimServico = '11:08'
+  const totalServico = '43 minutos'
+
   const funcionario = route.params?.teste
+
+const html = `
+  <html>
+    <body>
+      <img src="https://catalogo.raymundodafonte.com.br/uploads/marcas/HqB47Kpcbxx7pXfVj56trfl5YO8UcIRHOXaf5F3W.png" width="70" height="70" >
+      <h1 style='color:green'>Relatório!</h1>
+      <br>
+      <hr>
+      <h2 style='color:red'>Dados do funcionário</h2>
+      <h4>Nome :  ${funcionario.Nome}</h4>
+      <h4>Email : ${funcionario.Email}</h4>
+      <h4>Numéro : ${funcionario.Telefone}</h4>
+      <hr>
+      <h2 style='color:red'>Serviços Executados!</h2>
+      <h4>Empresa Solicitante : Hostpital Português</h4>
+      <h4>Serviço Utilizado : Robô Desinfecção de Vírus</h4>
+      <hr>
+      <h2 style='color:red'>Tempo de Execução</h2>
+      <h4>Inicio do Serviço : ${inicioServico}</h4>
+      <h4>Fim do Serviço : ${fimServico}</h4>
+      <h4>Tempo gasto do Serviço : ${totalServico}</h4>
+      <h4>Data do Serviço : 22/04/2023</h4>
+      <hr>
+      <h2 style='color:red'>Observação:</h2>
+      <h4>null</h4>
+
+
+
+
+
+    </body>
+  </html>
+
+  `;
+
+let gerarPDF = async () => {
+  const file = await printToFileAsync({
+    html: html,
+    base64: false
+  });
+  await shareAsync(file.uri);
+}
+
+function Finalizou() {
+  alert('Serviço Finalizado, Muito Obrigado!')
+  navigation.navigate('TelaPrincipal')
+}
 
 
 
   return (
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView
+      behavior='padding'
+      style={styles.container}>
 
         <View style={styles.Rel}>
           <Text style={styles.textRelatorio}>RELATÓRIO DE SERVIÇO:</Text>
@@ -65,11 +121,12 @@ export default function Relatorio({route}) {
           />
 
         <View style={styles.botoes}>
-          <TouchableOpacity style={styles.finalizar} onPress={() => navigation.navigate('TelaFuncionario')}>
+          <TouchableOpacity style={styles.finalizar} onPress={() => Finalizou()}>
+
             <AntDesign name="checksquare" size={40} color="#fff" />
             <Text style={styles.textfinalizar}>Finalizar</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.gerarpdf}>
+          <TouchableOpacity style={styles.gerarpdf} onPress={()=> gerarPDF()}>
             <MaterialCommunityIcons name="cloud-download" size={45} color="#fff" />
             <Text style={styles.downloadPDF}> Download PDF</Text>
           </TouchableOpacity>
@@ -237,7 +294,7 @@ const styles = StyleSheet.create({
 
   },
   downloadPDF:{
-
+    fontSize: 9.7,
     color: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
