@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#191970',
-
+    alignItems: 'center'
 
   },
   servicos: {
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     width: 150,
     alignItems: 'center',
     borderRadius: 10,
-
+    alignContent: 'center',
     borderWidth: 2,
     borderColor: '#000',
     shadowColor: '#000',
@@ -245,7 +245,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
 
   },
-
+  header:{
+    justifyContent:'center',
+    alignItems:'center'
+  }
 
 
 })

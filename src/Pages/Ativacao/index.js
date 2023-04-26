@@ -43,7 +43,7 @@ export default function Ativacao({route}) {
   return (
     <SafeAreaView style={styles.geral}>
 
-      <MaterialCommunityIcons name="key-wireless" size={90} color="#fff" />
+      <MaterialCommunityIcons name="key-wireless" size={120} color="#fff" />
 
       <View style={styles.container}>
         <Text style={styles.text}>Insira a chave de ativação</Text>
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 80,
     width: 180,
-    borderRadius: 50,
+    borderRadius: 20,
     marginTop: 20,
     borderWidth: 2,
     borderColor: '#000',
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 80,
     width: 160,
-    borderRadius: 50,
+    borderRadius: 20,
     borderWidth: 2,
     borderColor: '#000',
     shadowColor: '#000',
@@ -169,13 +169,14 @@ const styles = StyleSheet.create({
   },
 
   botaoFinalizar: {
+    marginHorizontal: 3,
     backgroundColor: '#008000',
     marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
     height: 80,
     width: 160,
-    borderRadius: 50,
+    borderRadius: 20,
     borderWidth: 2,
     borderColor: '#000',
     shadowColor: '#000',

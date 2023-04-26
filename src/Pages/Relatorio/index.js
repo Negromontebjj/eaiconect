@@ -25,9 +25,10 @@ export default function Relatorio({route}) {
 const html = `
   <html>
     <body>
-      <img src="https://catalogo.raymundodafonte.com.br/uploads/marcas/HqB47Kpcbxx7pXfVj56trfl5YO8UcIRHOXaf5F3W.png" width="80" height="80" >
+      <img src="https://catalogo.raymundodafonte.com.br/uploads/marcas/HqB47Kpcbxx7pXfVj56trfl5YO8UcIRHOXaf5F3W.png" width="70" height="70" >
       <h1 style='color:green'>Relatório!</h1>
       <br>
+      <h4 style='color:green'>Número do Serviço : 00123</h4>
       <hr>
       <h2 style='color:red'>Dados do funcionário</h2>
       <h4>Nome :  ${funcionario.Nome}</h4>
