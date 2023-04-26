@@ -36,7 +36,7 @@ export default function Ativacao({route}) {
 
   const Relatorio = () => {
     navigation.navigate('Relatorio', {teste:funcionario})
-
+    setPagModal(false)
   }
 
 

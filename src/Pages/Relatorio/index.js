@@ -109,16 +109,17 @@ function Finalizou() {
           <Text style={styles.text}>22/04/2023</Text>
           </View>
 
-          <Text style={styles.Relatorio}>Obs:</Text>
-          <TextInput
-            style={styles.TextArea}
-            editable
-            multiline
-            numberOfLines={4}
-            maxLength={40}
-            placeholder='OBS:'
+          <View style={styles.boxArea}>
+            <TextInput
+              style={styles.TextArea}
+              editable
+              multiline
+              numberOfLines={4}
+              maxLength={50}
+              placeholder='Alguma OBS:'
 
-          />
+            />
+          </View>
 
         <View style={styles.botoes}>
           <TouchableOpacity style={styles.finalizar} onPress={() => Finalizou()}>
@@ -312,11 +313,17 @@ const styles = StyleSheet.create({
     color: '#000',
     marginBottom: 14,
     borderRadius: 4,
-
+    marginTop: 20,
     height: 94,
+    width: 400,
     fontSize: 18,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 10
+  },
+  boxArea:{
+    justifyContent:'center',
+    alignItems:'center'
   }
 
 })

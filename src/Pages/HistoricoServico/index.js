@@ -16,7 +16,9 @@ export default function HistoricoServico({route}) {
       <Entypo style={styles.info} name="info-with-circle" size={45} color="#fff" />
 
       <View style={styles.header}>
-        <Text style={styles.informacoesFunc}>Nº Celular Logado : {funcionario.Telefone}</Text>
+        <Text style={styles.informacoesFunc}>Nome : {funcionario.Nome}</Text>
+        <Text style={styles.informacoesFunc}>Nº Celular  : {funcionario.Telefone}</Text>
+        <Text style={styles.informacoesFunc}>E-mail : {funcionario.Email}</Text>
       </View>
 
       <View style={styles.Rel}>
@@ -213,7 +215,6 @@ const styles = StyleSheet.create({
   informacoes: {
     borderRadius: 30,
     backgroundColor: '#fff',
-
     alignContent: 'flex-end',
     fontSize: 20,
     marginTop: 20,
@@ -224,40 +225,19 @@ const styles = StyleSheet.create({
   },
 
   informacoesFunc: {
-    paddingLeft: 20,
     fontSize: 14,
-    marginTop: 3,
-    color: '#000'
+    color: '#fff',
+
 
   },
   Relatorio: {
     fontSize: 16,
     color: '#fff',
     flexDirection: 'row',
-
-
     width: 300,
 
-
-
-
   },
-  header:{
-    margin: 5,
-    backgroundColor: '#fff',
-    height: 30,
-    borderRadius: 20,
-    borderWidth: 2,
-    borderColor: '#000',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 5
-    },
-    elevation: 6,
-    shadowOpacity: 1,
-    shadowRadius: 6,
-  },
+
   info:{
 
     borderRadius: 20,

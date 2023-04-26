@@ -7,7 +7,7 @@ export default function Loading({visible}) {
       <View style={styles.loading}>
         <ActivityIndicator
           size="large"
-          color={'#f54'}
+          color={'#ffff'}
           animating={true}
 
         />
