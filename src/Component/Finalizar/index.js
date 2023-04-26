@@ -11,17 +11,17 @@ export function Finalizar({handleClose, handleSIM, handleNAO}) {
       <View style={styles.content}>
         <Text style={styles.textModal}>Deseja Realmente Finalizar?</Text>
         <TouchableOpacity
-          style={styles.ModalButton}
+          style={styles.ModalButtonSIM}
           onPress={handleSIM}
         >
-          <Text style={styles.botao}>Sim</Text>
+          <Text style={styles.botaoSIM}>Sim</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.ModalButton}
+          style={styles.ModalButtonNAO}
           onPress={handleNAO}
         >
-          <Text style={[styles.botao, styles.Cancelar]}>Não</Text>
+          <Text style={styles.botaoNAO}>Não</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'space-around',
-    backgroundColor: '#F4A460',
+    backgroundColor: '#E6E6FA',
     marginVertical: 90,
     borderRadius: 30,
     height: 90,
@@ -58,19 +58,38 @@ const styles = StyleSheet.create({
 
   },
 
-  ModalButton:{
+  ModalButtonSIM:{
     zIndex: 80,
-    backgroundColor: '#191970',
+    backgroundColor: '#008000',
     borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center'
   },
 
-  botao: {
+  ModalButtonNAO:{
+    zIndex: 80,
+    backgroundColor: '#FF0000',
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  botaoSIM: {
     flex: 1,
     flexDirection:'row',
     textAlign: 'center',
 
+    fontWeight: ' bold',
+    padding:10,
+    fontSize: 24,
+    color: '#fff'
+
+  },
+
+  botaoNAO: {
+    flex: 1,
+    flexDirection:'row',
+    textAlign: 'center',
     fontWeight: ' bold',
     padding:10,
     fontSize: 24,

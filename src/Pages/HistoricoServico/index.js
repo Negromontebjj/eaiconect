@@ -43,7 +43,7 @@ export default function HistoricoServico({route}) {
             </TouchableOpacity>
           </View>
           <View >
-            <TouchableOpacity style={styles.fechar} onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity style={styles.fechar} onPress={() => navigation.navigate('TelaFuncionario', {teste:funcionario})}>
               <Fontisto name="close" size={45} color="#fff" />
               <Text style={styles.textFechar}>Fechar</Text>
             </TouchableOpacity>

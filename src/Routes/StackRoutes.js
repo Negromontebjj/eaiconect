@@ -14,6 +14,7 @@ import  Perfil  from "../Pages/Perfil";
 import { Chat } from "../Pages/Chat";
 import api from "../Services/api";
 import Relatorio from "../Pages/Relatorio";
+import Qrcode from "../Pages/Qrcode"
 
 
 const Stack = createNativeStackNavigator();
@@ -90,11 +91,19 @@ export function StackRoutes() {
       />
       <Stack.Screen name="MaisInfo" component={MaisInfo} />
       <Stack.Screen name="API" component={API} />
-      <Stack.Screen name="Notificacao" component={Notificacao} />
+      <Stack.Screen
+      name="Notificacao"
+      component={Notificacao}
+      options={{
+        headerShown: true,
+        title: "Serviços"
+      }}
+      />
       <Stack.Screen name="Perfil" component={Perfil} />
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="api" component={api} />
       <Stack.Screen name="Relatorio" component={Relatorio} />
+      <Stack.Screen name="Qrcode" component={Qrcode} />
 
 
 

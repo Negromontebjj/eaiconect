@@ -200,8 +200,9 @@ const styles = StyleSheet.create({
 
 
   Lista: {
+    marginTop: 10,
     borderRadius: 30,
-    backgroundColor: '#E6E6FA',
+    backgroundColor: '#fff',
     height: 200,
     marginBottom: 10,
     marginHorizontal: 20

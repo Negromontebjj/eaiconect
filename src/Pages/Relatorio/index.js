@@ -4,6 +4,7 @@ import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { printToFileAsync } from 'expo-print';
 import { shareAsync } from 'expo-sharing';
+import { Logo } from '../../Component/logo';
 
 
 
@@ -24,7 +25,7 @@ export default function Relatorio({route}) {
 const html = `
   <html>
     <body>
-      <img src="https://catalogo.raymundodafonte.com.br/uploads/marcas/HqB47Kpcbxx7pXfVj56trfl5YO8UcIRHOXaf5F3W.png" width="70" height="70" >
+      <img src="https://catalogo.raymundodafonte.com.br/uploads/marcas/HqB47Kpcbxx7pXfVj56trfl5YO8UcIRHOXaf5F3W.png" width="80" height="80" >
       <h1 style='color:green'>Relatório!</h1>
       <br>
       <hr>
@@ -74,6 +75,7 @@ function Finalizou() {
       <KeyboardAvoidingView
       behavior='padding'
       style={styles.container}>
+
 
         <View style={styles.Rel}>
           <Text style={styles.textRelatorio}>RELATÓRIO DE SERVIÇO:</Text>
