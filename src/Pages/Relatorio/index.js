@@ -36,7 +36,7 @@ const html = `
       <h4>Numéro : ${funcionario.Telefone}</h4>
       <hr>
       <h2 style='color:red'>Serviços Executados!</h2>
-      <h4>Empresa Solicitante : Hostpital Português</h4>
+      <h4>Solicitante : Ricardo</h4>
       <h4>Serviço Utilizado : Robô Desinfecção de Vírus</h4>
       <hr>
       <h2 style='color:red'>Tempo de Execução</h2>
@@ -84,7 +84,7 @@ function Finalizou() {
 
           <View style={styles.inforRelatorio}>
             <Text style={styles.Relatorio}>Solicitado Por : </Text>
-            <Text style={styles.text}>Brilux</Text>
+            <Text style={styles.text}>Ricardo</Text>
           </View>
 
           <View style={styles.inforRelatorio}>

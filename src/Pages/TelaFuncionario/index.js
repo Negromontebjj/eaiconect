@@ -3,22 +3,26 @@ import { View, Text, StyleSheet, KeyboardAvoidingView, TouchableOpacity, Image, 
 import { useNavigation } from '@react-navigation/native';
 import { Entypo, FontAwesome, AntDesign, Ionicons } from '@expo/vector-icons';
 import { AuthContext } from '../../contexts/auth';
+import * as Animatable from 'react-native-animatable';
 
 
 
 
-export default function TelaFuncionario({route}) {
+export default function TelaFuncionario({ route }) {
   const navigation = useNavigation();
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const funcionario = route.params?.teste
 
 
   return (
 
     <KeyboardAvoidingView style={styles.container}>
+
+
       <View style={styles.notificacao}>
-        <Entypo  name="info-with-circle" size={25} color="#fff" />
+        <Entypo name="info-with-circle" size={45} color="#fff" />
       </View>
+
       <View style={styles.notificacao}>
         <Text style={styles.info}>Olá : {funcionario.Nome}  </Text>
       </View>
@@ -28,15 +32,20 @@ export default function TelaFuncionario({route}) {
       <View style={styles.notificacao}>
         <Text style={styles.info}>Email : {funcionario.Email}</Text>
       </View>
-      <View style={styles.notificacaoSino}>
-        <TouchableOpacity onPress={() => navigation.navigate('Notificacao')}>
+      <Animatable.View
+        style={styles.notificacaoSino}
+        animation="pulse"
+        useNativeDriver
+        iterationCount={Infinity}
+      >
+        <TouchableOpacity onPress={() => navigation.navigate('Notificacao', { teste: funcionario })}>
           <Ionicons name="notifications" size={70} color="#ff3" />
         </TouchableOpacity>
-      </View>
+      </Animatable.View>
 
       <View style={styles.containerBox}>
         <View>
-          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('Ativacao', {teste:funcionario})}>
+          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('Ativacao', { teste: funcionario })}>
             <View style={styles.imgqrcode}>
               <Entypo name="key" size={60} color="#fff" />
             </View>
@@ -65,7 +74,7 @@ export default function TelaFuncionario({route}) {
 
         <View>
 
-          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('HistoricoServico', {teste:funcionario})}>
+          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('HistoricoServico', { teste: funcionario })}>
             <View style={styles.imgqrcode}>
               <FontAwesome name="history" size={60} color="#fff" />
             </View>
@@ -84,7 +93,7 @@ export default function TelaFuncionario({route}) {
 
 
 
-          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('Perfil', {teste:funcionario})}>
+          <TouchableOpacity style={styles.boxqrcode} onPress={() => navigation.navigate('Perfil', { teste: funcionario })}>
             <View style={styles.imgqrcode}>
               <FontAwesome name="gear" size={60} color="#fff" />
             </View>
@@ -129,13 +138,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  boxLogado:{
+  boxLogado: {
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   logado: {
-    color:'#fff',
+    color: '#fff',
     fontSize: 18
 
   },
@@ -243,7 +252,7 @@ const styles = StyleSheet.create({
 
     justifyContent: 'center',
     marginTop: 15,
-    marginBottom: 30,
+    marginBottom: 10,
   }
 
 

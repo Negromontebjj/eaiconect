@@ -1,55 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import axios from "axios";
 
-export default function Notificacao() {
+export default function Notificacao({ route }) {
   const [modalVisible, setModalVisible] = useState(false)
   const [tipoServico, setTipoServico] = useState('Serviço Pendente')
+  const [corBoxAndamento, setCorBoxAndamento] = useState('#fff')
   const [selectLista, setSelectLista] = useState()
+  const funcionario = route.params?.teste
+  const CodFuncionario = funcionario.CodFuncionario
+  const [user, setUser] = useState({});
   const navigation = useNavigation();
-  const [feed, setFeed] = useState([
-    {
-      id: '01',
-      empresaSolicitante: 'RH',
-      horarioSolicitacao: '15:46',
-      solicitadoPor: 'Tatiane',
-      servico: 'Desinfeccao'
-    },
-
-    {
-      id: '02',
-      empresaSolicitante: 'Hospital Portugues',
-      horarioSolicitacao: '11:29',
-      solicitadoPor: 'Francisca',
-      servico: 'Desinfeccao'
-    },
-
-    {
-      id: '03',
-      empresaSolicitante: 'Jubileu',
-      horarioSolicitacao: '13:11',
-      solicitadoPor: 'Jubileu',
-      servico: 'Desinfeccao'
-    },
-
-    {
-      id: '04',
-      empresaSolicitante: 'JBS',
-      horarioSolicitacao: '14:19',
-      solicitadoPor: 'Rafael',
-      servico: 'Desinfeccao'
-    },
-
-    {
-      id: '05',
-      empresaSolicitante: 'Apple',
-      horarioSolicitacao: '07:19',
-      solicitadoPor: 'Cristian',
-      servico: 'Desinfeccao'
-    },
-  ]);
 
 
+  const baseURL = `https://eaiconecta-api.onrender.com/agendamento/${CodFuncionario}`;
+
+  useEffect(() => {
+    axios.get(baseURL)
+      .then((resposta) => {
+        //setUser(response.data)
+        var servicos = resposta.data
+        //console.log(servicos)
+        var ListServico = servicos.response
+        setUser(ListServico)
+        console.log(ListServico)
+      });
+
+  }, []);
+  if (!user) return null;
 
   function TrocaAcao() {
     setTipoServico('Em Andamento')
@@ -62,45 +41,50 @@ export default function Notificacao() {
   }
 
   function ListaServico(props) {
+
     return (
       <View>
         <TouchableOpacity onPress={() => AddServico()}>
-
           <View style={styles.container}>
-
             <View style={styles.Lista}>
               <View>
-                <Text style={styles.text1}>{tipoServico}: ..... nº {props.data.id} </Text>
+                <Text style={styles.text1}>{tipoServico}: ..... nº {props.data.CodAgendamento} </Text>
               </View>
               <View>
-                <Text style={styles.text}>Solicitante : {props.data.empresaSolicitante}</Text>
-                <Text style={styles.text}>Horario da Solicitação : {props.data.horarioSolicitacao}</Text>
-                <Text style={styles.text}>Solicitado Por : {props.data.solicitadoPor}</Text>
-                <Text style={styles.text}>Serviço a execução : {props.data.servico}</Text>
+                <Text style={styles.text}>Solicitante : {props.data.Nome}</Text>
+                <Text style={styles.text}>Horario da Solicitação : {props.data.HoraServico}</Text>
+                <Text style={styles.text}>Tamanho do Local : {props.data.MedidasLocal}</Text>
+                <Text style={styles.text}>Serviço a execução : {props.data.InfoAdicionais}</Text>
+                <Text style={styles.text}>CEP : {props.data.CEP}</Text>
+                <Text style={styles.text}>Lougradouro : {props.data.Lougradouro}</Text>
+                <Text style={styles.text}>Numero : {props.data.Numero}</Text>
+                <Text style={styles.text}>Bairro : {props.data.Bairro}</Text>
+                <Text style={styles.text}>Ponto de Referência : {props.data.PontoDeRef}</Text>
               </View>
             </View>
           </View>
         </TouchableOpacity>
 
-        <Modal
-          animationType="fade"
-          style={styles.boxModal}
-          transparent={true}
-          visible={modalVisible}>
-          <View style={styles.Modal}>
-            <Text style={styles.textModal}>Deseja Executar este serviço? </Text>
+        <View style={styles.boxModal}>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalVisible}>
+            <View style={styles.Modal}>
+              <Text style={styles.textModal}>Deseja Executar este serviço?  </Text>
 
-            <View style={styles.Botoes}>
-            <TouchableOpacity style={styles.ModalButtonSIM} onPress={()=> TrocaAcao()}>
-              <Text style={styles.textbotaoSIM}>Sim</Text>
-            </TouchableOpacity>
+              <View style={styles.Botoes}>
+                <TouchableOpacity style={styles.ModalButtonSIM} onPress={() => TrocaAcao()}>
+                  <Text style={styles.textbotaoSIM}>Sim</Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity style={styles.ModalButtonNAO} onPress={() => setModalVisible(false)} >
-              <Text style={styles.textbotaoNAO}>Não</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.ModalButtonNAO} onPress={() => setModalVisible(false)} >
+                  <Text style={styles.textbotaoNAO}>Não</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </Modal>
+          </Modal>
+        </View>
       </View>
     )
   }
@@ -112,8 +96,8 @@ export default function Notificacao() {
     <View style={styles.container}>
       <FlatList
         showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item.id}
-        data={feed}
+        keyExtractor={(item) => item.CodAgendamento}
+        data={user}
         renderItem={({ item }) => <ListaServico data={item} />}
       />
     </View>
@@ -124,19 +108,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#191970',
-
+    justifyContent: 'center',
   },
 
-
-
   Modal: {
-    marginTop: 20,
-    alignSelf:'center',
-    alignContent:'center',
+    marginTop: 360,
+    alignSelf: 'center',
     justifyContent: 'center',
     borderRadius: 20,
     alignItems: 'center',
-    flex: .2,
+
     backgroundColor: '#E6E6FA',
     borderColor: '#fff',
     shadowColor: '#000',
@@ -149,9 +130,10 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
   },
 
-  Botoes:{
+  Botoes: {
     marginTop: 20,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: 10
   },
 
   ModalButtonSIM: {
@@ -169,7 +151,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
 
-  textbotaoNAO:{
+  textbotaoNAO: {
     fontSize: 18,
     color: '#fff',
     fontWeight: 'bold'
@@ -203,22 +185,22 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 30,
     backgroundColor: '#fff',
-    height: 200,
-    marginBottom: 10,
+    height: 280,
+    marginBottom: 5,
     marginHorizontal: 20
 
   },
   text1: {
-    textAlign:'center',
-    margin: 10,
+    textAlign: 'center',
+    margin: 5,
     marginTop: 10,
     color: '#191970',
     fontSize: 18,
     fontWeight: 'bold'
   },
   text: {
-    margin: 5,
-    marginHorizontal: 10,
+    margin: 2,
+    marginHorizontal: 20,
     color: '#000'
   },
 
